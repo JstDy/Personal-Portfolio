@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dylland Narrendra Putra | Software Engineer Portfolio</title>
+        <style>
+            :root {
+                color-scheme: light;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background: #f3f7ff;
+                color: #1f2937;
+            }
+
+            * {
+                box-sizing: border-box;
+                transition: all 0.2s ease;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: linear-gradient(135deg, #e0ecff 0%, #f8fbff 100%);
+            }
+
+            .container {
+                width: min(100%, 820px);
+                margin: 24px;
+                padding: 36px 40px;
+                background: #ffffff;
+                border-radius: 28px;
+                box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+                border: 1px solid rgba(148, 163, 184, 0.15);
+            }
+
+            header {
+                text-align: center;
+                margin-bottom: 24px;
+            }
+
+            header h1 {
+                margin: 0 0 8px;
+                font-size: clamp(2rem, 3vw, 2.5rem);
+                letter-spacing: -0.03em;
+                color: #0f172a;
+            }
+
+            header p {
+                margin: 0 auto;
+                color: #475569;
+                line-height: 1.6;
+                max-width: 40rem;
+                font-size: 0.95rem;
+            }
+
+            /* Menu Navigasi Interaktif */
+            .nav-tabs {
+                display: flex;
+                justify-content: center;
+                gap: 8px;
+                margin-bottom: 28px;
+                border-bottom: 2px solid #f1f5f9;
+                padding-bottom: 14px;
+                flex-wrap: wrap;
+            }
+
+            .tab-btn {
+                background: #f1f5f9;
+                border: none;
+                padding: 10px 16px;
+                border-radius: 12px;
+                font-weight: 600;
+                color: #475569;
+                cursor: pointer;
+                font-size: 0.9rem;
+            }
+
+            .tab-btn:hover {
+                background: #e2e8f0;
+                color: #1e293b;
+            }
+
+            .tab-btn.active {
+                background: #2563eb;
+                color: #ffffff;
+                box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+            }
+
+            /* Konten Tab */
+            .tab-content {
+                display: none;
+                animation: fadeIn 0.3s ease-in-out;
+            }
+
+            .tab-content.active {
+                display: block;
+            }
+
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(4px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+
+            h2 {
+                margin: 0 0 14px 0;
+                color: #0f172a;
+                font-size: 1.25rem;
+            }
+
+            p.desc {
+                margin: 0 0 16px 0;
+                color: #334155;
+                line-height: 1.6;
+            }
+
+            /* Badge Keahlian Interaktif */
+            .skills-grid {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-top: 12px;
+                margin-bottom: 20px;
+            }
+
+            .skill-badge {
+                background: #eff6ff;
+                color: #1d4ed8;
+                padding: 8px 14px;
+                border-radius: 10px;
+                font-size: 0.85rem;
+                font-weight: 600;
+                border: 1px solid #dbeafe;
+                cursor: pointer;
+            }
+
+            .skill-badge:hover, .skill-badge.active {
+                background: #2563eb;
+                color: #ffffff;
+                border-color: #2563eb;
+                transform: translateY(-2px);
+            }
+
+            /* Kotak Perincian Keahlian */
+            .skill-detail-box {
+                background: #f8fafc;
+                border: 1px solid #e2e8f0;
+                border-radius: 16px;
+                padding: 20px;
+                margin-top: 16px;
+                min-height: 90px;
+            }
+
+            .skill-detail-box h3 {
+                margin: 0 0 6px 0;
+                color: #0f172a;
+                font-size: 1.05rem;
+            }
+
+            .skill-detail-box p {
+                margin: 0;
+                color: #475569;
+                font-size: 0.9rem;
+                line-height: 1.5;
+            }
+
+            /* Proyek Grid */
+            .projects-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                gap: 16px;
+                margin-top: 14px;
+            }
+
+            .project-card {
+                background: #f8fafc;
+                border: 1px solid #e2e8f0;
+                border-radius: 16px;
+                padding: 18px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .project-card:hover {
+                border-color: #cbd5e1;
+                transform: translateY(-3px);
+                box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
+            }
+
+            .project-card h3 {
+                margin: 0 0 8px 0;
+                font-size: 1.05rem;
+                color: #0f172a;
+            }
+
+            .project-card p {
+                margin: 0 0 14px 0;
+                font-size: 0.88rem;
+                color: #475569;
+                line-height: 1.5;
+            }
+
+            .project-tech {
+                display: flex;
+                gap: 6px;
+                flex-wrap: wrap;
+                margin-bottom: 14px;
+            }
+
+            .project-tech span {
+                font-size: 0.72rem;
+                background: #e0ecff;
+                color: #1d4ed8;
+                padding: 3px 8px;
+                border-radius: 6px;
+                font-weight: 600;
+            }
+
+            .project-links {
+                display: flex;
+                gap: 12px;
+                font-size: 0.85rem;
+                font-weight: 600;
+            }
+
+            .project-links a {
+                color: #2563eb;
+                text-decoration: none;
+            }
+
+            .project-links a:hover {
+                text-decoration: underline;
+            }
+
+            /* List Hobi */
+            .hobby-list {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: grid;
+                gap: 10px;
+            }
+
+            .hobby-item {
+                background: #f8fafc;
+                padding: 12px 16px;
+                border-radius: 12px;
+                border: 1px solid #e2e8f0;
+                color: #334155;
+                font-weight: 500;
+                font-size: 0.92rem;
+            }
+
+            .hobby-item:hover {
+                border-color: #cbd5e1;
+                background: #f1f5f9;
+                transform: translateX(4px);
+            }
+
+            /* Link Card */
+            .link-card {
+                margin-top: 24px;
+                padding: 18px 22px;
+                border-radius: 16px;
+                background: linear-gradient(135deg, #eff6ff 0%, #e0ecff 100%);
+                border: 1px solid #dbeafe;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            .link-card p {
+                margin: 0;
+                color: #1e3a8a;
+                font-size: 0.95rem;
+            }
+
+            .link-card a {
+                color: #ffffff;
+                background: #2563eb;
+                text-decoration: none;
+                font-weight: 600;
+                padding: 8px 16px;
+                border-radius: 10px;
+                font-size: 0.85rem;
+                box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+            }
+
+            .link-card a:hover {
+                background: #1d4ed8;
+            }
+        </style>
+    </head>
+    <body>
+        <main class="container">
+            <header>
+                <h1>Dylland Narrendra Putra</h1>
+                <p>Junior Software Engineer with a passion for building interactive web applications</p>
+            </header>
+
+            <!-- Menu Navigasi Interaktif -->
+            <nav class="nav-tabs">
+                <button class="tab-btn active" onclick="switchTab(event, 'about')">About</button>
+                <button class="tab-btn" onclick="switchTab(event, 'skills')">Skills</button>
+                <button class="tab-btn" onclick="switchTab(event, 'projects')">Projects</button>
+                <button class="tab-btn" onclick="switchTab(event, 'hobbies')">Hobbies</button>
+            </nav>
+
+            <!-- Konten 1: About -->
+            <section id="about" class="tab-content active">
+                <h2>About Me</h2>
+                <p class="desc">
+                    Hello! I am a student deeply passionate about Web Development, sharpening my technical skills and preparing myself for the digital world. I love exploring new technologies and building creative, interactive applications.
+                </p>
+                <div class="link-card">
+                    <p>Want to connect or explore more?</p>
+                    <a href="https://s.id/Dylland" target="_blank" rel="noopener noreferrer">Open Microsite</a>
+                </div>
+            </section>
+
+            <!-- Konten 2: Skills -->
+            <section id="skills" class="tab-content">
+                <h2>Skills & Technologies</h2>
+                <p class="desc">Click on any skill below to view detailed information:</p>
+                
+                <div class="skills-grid">
+                    <span class="skill-badge active" onclick="showSkillDetail('html')">HTML5 & CSS3</span>
+                    <span class="skill-badge" onclick="showSkillDetail('web')">Web Development</span>
+                    <span class="skill-badge" onclick="showSkillDetail('server')">Server Management</span>
+                    <span class="skill-badge" onclick="showSkillDetail('problem')">Problem Solving</span>
+                </div>
+
+                <div id="skill-detail-box" class="skill-detail-box">
+                    <h3 id="detail-title">HTML5 & CSS3</h3>
+                    <p id="detail-desc">Used to design clean structural web foundations, manage layouts, custom styling, and ensure responsive visual behavior across multiple devices.</p>
+                </div>
+            </section>
+
+            <!-- Konten 3: Projects (BARU) -->
+            <section id="projects" class="tab-content">
+                <h2>Featured Projects</h2>
+                <p class="desc">A selection of web applications and technical projects I have built:</p>
+                
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div>
+                            <h3>Portfolio Website</h3>
+                            <p>A clean, responsive, and interactive personal portfolio web built with modern vanilla HTML, CSS, and JavaScript.</p>
+                            <div class="project-tech">
+                                <span>HTML5</span>
+                                <span>CSS3</span>
+                                <span>JavaScript</span>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/username" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
+                            <a href="#" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div>
+                            <h3>Calculator App</h3>
+                            <p>A fast and lightweight calculator web application featuring fluid layout design, clear interaction states, and real-time computation logic.</p>
+                            <div class="project-tech">
+                                <span>UI/UX</span>
+                                <span>JavaScript</span>
+                                <span>CSS Grid</span>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/username" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
+                            <a href="#" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Konten 4: Hobbies -->
+            <section id="hobbies" class="tab-content">
+                <h2>Hobbies & Interests</h2>
+                <p class="desc">Activities I enjoy to refresh my mind and boost creativity:</p>
+                <ul class="hobby-list">
+                    <li class="hobby-item">🎮 Playing Minecraft</li>
+                    <li class="hobby-item">🎧 Listening to music</li>
+                    <li class="hobby-item">⚙️ Managing and administering Minecraft game servers</li>
+                    <li class="hobby-item">💻 Operating system customization & device troubleshooting</li>
+                    <li class="hobby-item">🌐 Experimenting with and designing clean simple web layouts</li>
+                    <li class="hobby-item">🚀 Keeping up with modern tech trends and computer hardware</li>
+                </ul>
+            </section>
+        </main>
+
+        <script>
+            // Tab Switcher
+            function switchTab(evt, tabName) {
+                const contents = document.getElementsByClassName("tab-content");
+                for (let i = 0; i < contents.length; i++) {
+                    contents[i].classList.remove("active");
+                }
+
+                const buttons = document.getElementsByClassName("tab-btn");
+                for (let i = 0; i < buttons.length; i++) {
+                    buttons[i].classList.remove("active");
+                }
+
+                document.getElementById(tabName).classList.add("active");
+                evt.currentTarget.classList.add("active");
+            }
+
+            // Skill Descriptions Data (English)
+            const skillData = {
+                html: {
+                    title: "HTML5 & CSS3",
+                    desc: "Used to design clean structural web foundations, manage layouts, custom styling, and ensure responsive visual behavior across multiple devices."
+                },
+                web: {
+                    title: "Web Development",
+                    desc: "Focused on comprehensive website creation, ranging from interface design to fundamental web programming logic."
+                },
+                server: {
+                    title: "Server Management",
+                    desc: "Hands-on experience in configuring, managing, and maintaining backend environments (such as game servers) to ensure continuous stability."
+                },
+                problem: {
+                    title: "Problem Solving",
+                    desc: "Accustomed to analyzing technical hurdles, resolving system or device bugs, and leveraging AI assistants actively to optimize development outcomes."
+                }
+            };
+
+            // Skill Badge Interactivity
+            function showSkillDetail(skillKey) {
+                const titleEl = document.getElementById("detail-title");
+                const descEl = document.getElementById("detail-desc");
+                
+                titleEl.textContent = skillData[skillKey].title;
+                descEl.textContent = skillData[skillKey].desc;
+
+                const badges = document.getElementsByClassName("skill-badge");
+                for (let i = 0; i < badges.length; i++) {
+                    badges[i].classList.remove("active");
+                }
+                event.currentTarget.classList.add("active");
+            }
+        </script>
+    </body>
+</html>
